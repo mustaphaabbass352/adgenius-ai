@@ -1171,7 +1171,7 @@ async function generateTextToVideoMH(apiKey, businessName, productDesc, adData) 
       name: `${businessName} Ad`,
       end_seconds: 5,
       orientation,
-      resolution: '720p',
+      resolution: '480p',
       style: {
         prompt: adData.videoPromptForMH || `${tone} advertisement for ${businessName}. ${productDesc}. Cinematic, professional, high quality commercial ad.`
       }
@@ -1201,7 +1201,7 @@ async function generateImageToVideoMH(apiKey, businessName, adData) {
     body: JSON.stringify({
       name: `${businessName} Ad Video`,
       end_seconds: 5,
-      resolution: '720p',
+      resolution: '480p',
       assets: { image_file_path: filePath },
       style: {
         prompt: adData.klingImagePrompt || `Product ad for ${businessName}. Dynamic motion, cinematic reveal, commercial quality.`
