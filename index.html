@@ -1071,7 +1071,7 @@ Target Audience: ${audience}
 Platform: ${platform}
 Tone: ${tone}
 Goal: ${goal}
-${uploadedImageBase64 ? 'Note: Customer has a product image to use for image-to-video.' : ''}
+${uploadedImageBase64 ? 'Note: Customer has a product image to use for image-to-video. The video MUST keep the product image as the main focus at all times - do NOT replace or alter the product itself!' : ''}
 
 Return ONLY valid JSON with this exact structure:
 {
@@ -1080,10 +1080,10 @@ Return ONLY valid JSON with this exact structure:
   "caption": "Platform-optimized caption for ${platform}. 3-5 sentences. Engaging and on-brand.",
   "hashtags": ["hashtag1", "hashtag2", "hashtag3", "hashtag4", "hashtag5", "hashtag6", "hashtag7", "hashtag8"],
   "cta": "Strong call-to-action line (max 15 words)",
-  "klingPrompt": "Detailed Kling AI video generation prompt. Describe visual style, scenes, transitions, mood, lighting, camera movements. 100-150 words.",
-  ${uploadedImageBase64 ? '"klingImagePrompt": "Kling image-to-video prompt for the uploaded product image. Describe motion, camera, effects to bring the product image to life. 80-100 words.",' : ''}
-  "imagePrompt": "FLUX.1 image generation prompt for a ${platform} ad creative for ${name}. Describe style, composition, lighting, mood. No text in image. 50-80 words.",
-  "videoPromptForMH": "Short cinematic text-to-video prompt for ${name} ad. Describe the scene, motion, mood, and visual style in 30-50 words. Keep it vivid and action-focused.",
+  "klingPrompt": "Ultra-detailed video generation prompt, 150-200 words. The product is the HERO - always the focal point. Cinematic professional commercial, high-end lighting, smooth camera movements (slow pans, subtle zooms, dolly shots), premium brand aesthetic, photorealistic, 4k, high contrast, rich colors. Describe transitions, music vibe, and how the product stays front and center in every shot.",
+  ${uploadedImageBase64 ? '"klingImagePrompt": "Image-to-video prompt, 100-150 words. CRITICAL: The original product image must remain completely unchanged and be the central focus at all times. Add subtle, elegant motion: slow zoom-in/out, gentle pan, soft parallax effect, subtle highlights moving across the product, premium cinematic lighting, professional commercial style, 4k quality, no people in the frame unless specifically relevant, product stays perfectly centered, no distortion to the product itself.",' : ''}
+  "imagePrompt": "Professional product advertisement photo for ${name} - ${desc}. Studio lighting, shallow depth of field, premium composition, product is the hero, no text in image, commercial photography, 4k, high detail, rich colors.",
+  "videoPromptForMH": "Cinematic product commercial, 50-80 words. Product is the central focus. Premium professional lighting, smooth camera movements, subtle motion, 4k quality, commercial aesthetic, brand color palette, photorealistic.",
   "variations": [
     {
       "angle": "Angle name (e.g. Fear of Missing Out)",
