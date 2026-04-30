@@ -791,40 +791,9 @@
       <div class="logo-tag">Complete Ad Package Generator</div>
     </div>
   </div>
-  <button class="api-config-btn" onclick="openModal()">
-    ⚙️ API Keys
-  </button>
 </header>
 
-<!-- ─── API KEY MODAL ─── -->
-<div class="modal-overlay" id="apiModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <h3>Configure API Keys</h3>
-    <p>
-      Get your free keys:<br>
-      → <a href="https://console.groq.com" target="_blank">console.groq.com</a> (Groq – Ad Copy)<br>
-      → <a href="https://huggingface.co/settings/tokens" target="_blank">huggingface.co/settings/tokens</a> (Image Gen)<br>
-      → <a href="https://magichour.ai/developer" target="_blank">magichour.ai/developer</a> (Video Gen – Free)
-    </p>
-    <div class="form-group">
-      <label>Groq API Key</label>
-      <input type="text" id="groqKey" placeholder="gsk_..." />
-    </div>
-    <div class="form-group">
-      <label>Hugging Face API Key</label>
-      <input type="text" id="hfKey" placeholder="hf_..." />
-    </div>
-    <div class="form-group">
-      <label>Magic Hour API Key <span style="color:var(--success);font-size:10px;font-weight:400;text-transform:none">Free daily credits — no card needed</span></label>
-      <input type="text" id="mhKey" placeholder="mh-..." />
-    </div>
-    <div class="modal-actions">
-      <button class="generate-btn" style="margin-top:0; padding: 12px 24px; width:auto; font-size:15px" onclick="saveKeys()">Save Keys</button>
-      <button class="api-config-btn" onclick="closeModal()">Cancel</button>
-    </div>
-  </div>
-</div>
+
 
 <!-- ─── MAIN APP ─── -->
 <div class="app">
@@ -993,28 +962,7 @@ function handleImageUpload(e) {
   reader.readAsDataURL(file);
 }
 
-// ─── API KEY MODAL ───
-function openModal() {
-  document.getElementById('apiModal').classList.add('open');
-  document.getElementById('groqKey').value = localStorage.getItem('groqKey') || '';
-  document.getElementById('hfKey').value = localStorage.getItem('hfKey') || '';
-  document.getElementById('mhKey').value = localStorage.getItem('mhKey') || '';
-}
 
-function closeModal() {
-  document.getElementById('apiModal').classList.remove('open');
-}
-
-function saveKeys() {
-  const groq = document.getElementById('groqKey').value.trim();
-  const hf = document.getElementById('hfKey').value.trim();
-  const mh = document.getElementById('mhKey').value.trim();
-  if (groq) localStorage.setItem('groqKey', groq);
-  if (hf) localStorage.setItem('hfKey', hf);
-  if (mh) localStorage.setItem('mhKey', mh);
-  closeModal();
-  showToast('API keys saved ✓');
-}
 
 function showToast(msg) {
   const t = document.createElement('div');
@@ -1042,15 +990,9 @@ async function animateStep(stepId) {
 
 // ─── MAIN GENERATE ───
 async function generateAd() {
-  const groqKey = localStorage.getItem('groqKey');
-  const hfKey = localStorage.getItem('hfKey');
-  const mhKey = localStorage.getItem('mhKey');
-
-  if (!groqKey || !hfKey) {
-    openModal();
-    showToast('Please add your API keys first');
-    return;
-  }
+  const groqKey = '__GROQ_API_KEY__';
+  const hfKey = '__HF_API_KEY__';
+  const mhKey = '__MH_API_KEY__';
 
   const businessName = document.getElementById('businessName').value.trim();
   const productDesc = document.getElementById('productDesc').value.trim();
@@ -1362,7 +1304,7 @@ function renderResults(data, imageUrl, videoUrl, businessName) {
   cards.push(makeCard('🖼️', 'AI Generated Ad Image', 'gold', imgContent, null));
 
   // 4b. Generated Video (if Magic Hour key was provided)
-  const mhKey = localStorage.getItem('mhKey');
+  const mhKey = '__MH_API_KEY__';
   if (mhKey) {
     const videoContent = videoUrl
       ? `<div class="video-container">
@@ -1466,12 +1408,7 @@ function escHtml(str) {
   return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// Load saved keys on start
-window.addEventListener('load', () => {
-  if (!localStorage.getItem('groqKey') || !localStorage.getItem('hfKey')) {
-    setTimeout(() => showToast('⚙️ Add your 3 API keys to get started'), 800);
-  }
-});
+
 </script>
 </body>
 </html>

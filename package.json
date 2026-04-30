@@ -1,0 +1,12 @@
+{
+  "name": "adgenius-ai",
+  "version": "1.0.0",
+  "description": "AdGenius AI — Complete Ad Package Generator",
+  "scripts": {
+    "build": "node build.js",
+    "dev": "node -e \"console.log('Open index.html in your browser for development. For production, run \\\"npm run build\\\" and deploy the \\\\\"dist\\\\\" folder to Vercel.')\""
+  },
+  "keywords": ["ad-generator", "ai", "vercel"],
+  "author": "",
+  "license": "MIT"
+}

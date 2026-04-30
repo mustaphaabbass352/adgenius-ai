@@ -1,0 +1,16 @@
+# Environment variables (keep your keys secret!)
+.env
+
+# Build output directory
+dist/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories
+.vscode/
+.idea/
+
+.vercel
+.env*.local
