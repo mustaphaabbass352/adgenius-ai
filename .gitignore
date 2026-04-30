@@ -2,7 +2,7 @@
 .env
 
 # Build output directory
-dist/
+public/
 
 # OS files
 .DS_Store

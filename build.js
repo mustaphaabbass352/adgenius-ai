@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 
-// Create dist directory if it doesn't exist
-const distDir = path.join(__dirname, 'dist');
-if (!fs.existsSync(distDir)) {
-  fs.mkdirSync(distDir);
+// Create public directory if it doesn't exist
+const publicDir = path.join(__dirname, 'public');
+if (!fs.existsSync(publicDir)) {
+  fs.mkdirSync(publicDir);
 }
 
 // Read index.html
@@ -22,8 +22,8 @@ for (const [placeholder, value] of Object.entries(replacements)) {
   html = html.replace(new RegExp(placeholder, 'g'), value);
 }
 
-// Write to dist/index.html
-const outputPath = path.join(distDir, 'index.html');
+// Write to public/index.html
+const outputPath = path.join(publicDir, 'index.html');
 fs.writeFileSync(outputPath, html, 'utf8');
 
-console.log('✅ Build complete! Output in dist/ folder');
+console.log('✅ Build complete! Output in public/ folder');
